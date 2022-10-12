@@ -13,5 +13,4 @@ public class Bank {
                 "X. Exit\n");
 
     }
-
 }
