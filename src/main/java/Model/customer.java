@@ -1,7 +1,11 @@
 package Model;
 
-public class Customer {
-    private int id;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(value = {"Name","DOB","PhoneNumber","StreetAddress", "City","State","ZipCode","CreateDate"})
+public class customer {
+    private String id;
     private String Name;
     private int DOB;
     private int PhoneNumber;

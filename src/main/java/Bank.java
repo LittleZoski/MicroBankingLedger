@@ -1,7 +1,10 @@
+import service.SimulateTransaction;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class Bank {
     public static void main(String[] args) {
@@ -18,6 +21,11 @@ public class Bank {
                 "5. CRUD a Customer Account\n" +
                 "6. Deposit/Withdrawl funds\n" +
                 "X. Exit\n");
+
+        int selection = userInput();
+        if(selection == 3){
+            handleSimulatedTransaction();
+        }
 
     }
 
@@ -65,4 +73,24 @@ public class Bank {
             e.printStackTrace();
         }
     }
+
+    // method to take user input on option
+    public static int userInput(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Selection: ");
+        int selection = input.nextInt();
+        return selection;
+    }
+
+
+    //method for user to input id for simulate transation
+
+    public static void handleSimulatedTransaction(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter customer account number:");
+        long accountNum = input.nextLong();
+        SimulateTransaction simulateTransaction = new SimulateTransaction(accountNum);
+        simulateTransaction.loadTransaction(accountNum);
+    }
+
 }
