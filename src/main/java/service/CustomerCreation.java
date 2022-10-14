@@ -36,7 +36,7 @@ public class CustomerCreation {
 
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(url);
-
+            //since customer id is autoIncrement we dont declare it here.
             stmt = conn.prepareStatement("Insert into Customer (Name, DOB, PhoneNumber, StreetAddress, City, State)" +
                     "VALUES(?, ?, ?, ?, ?, ?)" );
             stmt.setString(1, customer.getName());

@@ -10,24 +10,29 @@ public class Bank {
     public static void main(String[] args) {
 
         createBankDB();
-        System.out.println("Welcome to the Code School Bank of Awesomeness\n" +
-                "-----------------------------------------------\n" +
-                "\n" +
-                "Select from the following: \n" +
-                "1. Generate a Statement\n" +
-                "2. Generate Accounting Reports\n" +
-                "3. Simulate a transaction for Account\n" +
-                "4. Create a Customer\n" +
-                "5. CRUD a Customer Account\n" +
-                "6. Deposit/Withdrawl funds\n" +
-                "X. Exit\n");
+        String selection = "0";
+        while(!selection.equalsIgnoreCase("X")){
+            System.out.println("Welcome to the Code School Bank of Awesomeness\n" +
+                    "-----------------------------------------------\n" +
+                    "\n" +
+                    "Select from the following: \n" +
+                    "1. Generate a Statement\n" +
+                    "2. Generate Accounting Reports\n" +
+                    "3. Simulate a transaction for Account\n" +
+                    "4. Create a Customer\n" +
+                    "5. CRUD a Customer Account\n" +
+                    "6. Deposit/Withdrawl funds\n" +
+                    "X. Exit\n");
 
-        int selection = userInput();
-        if(selection == 3){
-            handleSimulatedTransaction();
-        } else if (selection == 4){
-            CustomerCreation.customerCreation();
+            selection = userInput();
+
+            if(selection.equals("3")){
+                handleSimulatedTransaction();
+            } else if (selection.equalsIgnoreCase("4")){
+                CustomerCreation.customerCreation();
+            }
         }
+
     }
 
 
@@ -47,7 +52,7 @@ public class Bank {
             System.out.println("Created database successfully");
             stmt = conn.createStatement();
             stmt.executeUpdate("create table if not exists Customer" +"(" +
-                           // NOT NULL AUTO_INCREMENT, maybe something like this?
+                           // in SQLite AUTOINCREMENT only work with integer type
                     "                    id integer primary key AUTOINCREMENT," +
                     "                    Name String," +
                     "                    DOB int," +
@@ -79,10 +84,10 @@ public class Bank {
     }
 
     // method to take user input on option
-    public static int userInput(){
+    public static String userInput(){
         Scanner input = new Scanner(System.in);
         System.out.println("Selection: ");
-        int selection = input.nextInt();
+        String selection = input.nextLine();
         return selection;
     }
 

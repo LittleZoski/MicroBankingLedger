@@ -36,15 +36,15 @@ public class SimulateTransaction {
             System.out.println("transaction id is: " + transactionResponse.transactionId);
             System.out.println("customer id is: " +  transactionResponse.customer.getId());
             conn = DriverManager.getConnection(url);
-            stmt = conn.prepareStatement("insert into TransactionTable " + "( transactionId, Account_ID, amount, transactionType, merchantName, merchantType ) " +
-                    "values (?,?,?,?,?,?)");
+            stmt = conn.prepareStatement("insert into TransactionTable " + "( transactionId, amount, transactionType, merchantName, merchantType ) " +
+                    "values (?,?,?,?,?)");
             stmt.setString(1, transactionResponse.transactionId);
             //i don't think customer id should be passed to transaction account_ID, Account_ID has underscore, need a tick` to let sqlite know)
-            stmt.setLong(2, Long.parseLong(transactionResponse.customer.getId()));
-            stmt.setDouble(3, transactionResponse.amount);
-            stmt.setString(4, transactionResponse.transactionType);
-            stmt.setString(5, transactionResponse.recipient.merchantName);
-            stmt.setString(6, transactionResponse.recipient.merchantType);
+            //stmt.setLong(2, Long.parseLong(transactionResponse.customer.getId()));
+            stmt.setDouble(2, transactionResponse.amount);
+            stmt.setString(3, transactionResponse.transactionType);
+            stmt.setString(4, transactionResponse.recipient.merchantName);
+            stmt.setString(5, transactionResponse.recipient.merchantType);
             stmt.execute();
 
 
