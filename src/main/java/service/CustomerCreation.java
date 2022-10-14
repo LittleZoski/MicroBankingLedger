@@ -20,11 +20,11 @@ public class CustomerCreation {
         System.out.print("Please Enter Customer Address: ");
         customer.setStreetAddress(customerCreation.nextLine());
         System.out.print("Please Enter Customer City: ");
-        customer.setCity(); = customerCreation.nextLine();
+        customer.setCity(customerCreation.nextLine());
         System.out.print("Please Enter Customer State: ");
-        String customerState = customerCreation.nextLine();
+        customer.setState(customerCreation.nextLine());
         System.out.print("Please Enter Customer Zip: ");
-        String customerZip = customerCreation.nextLine();
+        customer.setZipCode(Integer.parseInt(customerCreation.nextLine()));
 
 
 
