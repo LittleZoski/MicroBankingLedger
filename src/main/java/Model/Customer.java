@@ -7,8 +7,8 @@ import java.sql.Date;
 public class Customer {
     private String id;
     private String Name;
-    private Date DOB;
-    private int PhoneNumber;
+    private java.sql.Date DOB;
+    private String PhoneNumber;
     private String StreetAddress;
     private String City;
     private String State;
@@ -39,11 +39,11 @@ public class Customer {
         this.DOB = DOB;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return PhoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         PhoneNumber = phoneNumber;
     }
 
