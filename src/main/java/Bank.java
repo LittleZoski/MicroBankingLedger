@@ -1,3 +1,4 @@
+import service.CustomerCreation;
 import service.SimulateTransaction;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,6 +25,8 @@ public class Bank {
         int selection = userInput();
         if(selection == 3){
             handleSimulatedTransaction();
+        } else if (selection == 4){
+            CustomerCreation.customerCreation();
         }
     }
 
@@ -44,7 +47,8 @@ public class Bank {
             System.out.println("Created database successfully");
             stmt = conn.createStatement();
             stmt.executeUpdate("create table if not exists Customer" +"(" +
-                    "                    id int," +
+                           // NOT NULL AUTO_INCREMENT, maybe something like this?
+                    "                    id integer primary key AUTOINCREMENT," +
                     "                    Name String," +
                     "                    DOB int," +
                     "                    PhoneNumber int," +
