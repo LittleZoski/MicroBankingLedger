@@ -26,7 +26,6 @@ public class Bank {
         if(selection == 3){
             handleSimulatedTransaction();
         }
-
     }
 
 
@@ -37,11 +36,12 @@ public class Bank {
         Connection conn = null;
         //ResultSet rs;
         Statement stmt = null;
-        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        //String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         try{
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(url);
-            System.out.println("created database successfully");
+            System.out.println("Created database successfully");
             stmt = conn.createStatement();
             stmt.executeUpdate("create table Customer" +"(" +
                     "                    id int," +
@@ -83,7 +83,7 @@ public class Bank {
     }
 
 
-    //method for user to input id for simulate transation
+    //method for user to input id for simulate transaction
 
     public static void handleSimulatedTransaction(){
         Scanner input = new Scanner(System.in);
