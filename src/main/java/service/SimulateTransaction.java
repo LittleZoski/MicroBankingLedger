@@ -29,6 +29,9 @@ public class SimulateTransaction {
             TransactionResponse transactionResponse = client.execute(request, classicHttpResponse -> mapper.readValue(classicHttpResponse.getEntity().getContent(), TransactionResponse.class));
             System.out.println("transaction id is: " + transactionResponse.transactionId);
             System.out.println("customer id is: " +  transactionResponse.customer.getId());
+
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

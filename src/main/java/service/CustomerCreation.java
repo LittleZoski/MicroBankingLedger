@@ -1,27 +1,32 @@
 package service;
+import Model.Customer;
+
 import java.sql.*;
 import java.util.Scanner;
 
 
 public class CustomerCreation {
-    public static void main(String[] args) {
+    public static void customerCreation() {
+        Customer customer = new Customer();
 
         Scanner customerCreation = new Scanner(System.in);
 
         System.out.print("Please Enter Customer Name: ");
-        String customerName = customerCreation.nextLine();
+        customer.setName(customerCreation.nextLine());
         System.out.print("Please Enter Customer DOB: ");
-        String customerDOB = customerCreation.nextLine();
+        customer.setDOB(Integer.parseInt(customerCreation.nextLine()));
         System.out.print("Please Enter Customer Phone Number: ");
-        String customerTFN = customerCreation.nextLine();
+        customer.setPhoneNumber(Integer.parseInt(customerCreation.nextLine()));
         System.out.print("Please Enter Customer Address: ");
-        String customerAddress = customerCreation.nextLine();
+        customer.setStreetAddress(customerCreation.nextLine());
         System.out.print("Please Enter Customer City: ");
-        String customerCity = customerCreation.nextLine();
+        customer.setCity(); = customerCreation.nextLine();
         System.out.print("Please Enter Customer State: ");
         String customerState = customerCreation.nextLine();
         System.out.print("Please Enter Customer Zip: ");
         String customerZip = customerCreation.nextLine();
+
+
 
     }
 }
