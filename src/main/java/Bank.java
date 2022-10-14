@@ -43,7 +43,7 @@ public class Bank {
             conn = DriverManager.getConnection(url);
             System.out.println("Created database successfully");
             stmt = conn.createStatement();
-            stmt.executeUpdate("create table Customer" +"(" +
+            stmt.executeUpdate("create table if not exists Customer" +"(" +
                     "                    id int," +
                     "                    Name String," +
                     "                    DOB int," +
@@ -53,7 +53,7 @@ public class Bank {
                     "                    State String)");
 
 
-            stmt.executeUpdate("create table Account" +"(" +
+            stmt.executeUpdate("create table if not exists Account" +"(" +
                     "                    ID long,\n" +
                     "                    Customer_ID long,\n" +
                     "                    balance double,\n" +
@@ -61,7 +61,7 @@ public class Bank {
                     "                    accountNum long)");
 
             //Transaction is a keyword for sql use a diff name
-            stmt.executeUpdate("create table TransactionTable" +"(" +
+            stmt.executeUpdate("create table if not exists TransactionTable" +"(" +
                     "                    transactionId long,\n" +
                     "                    Account_ID long,\n" +
                     "                    amount double,\n" +
@@ -89,8 +89,8 @@ public class Bank {
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter customer account number:");
         long accountNum = input.nextLong();
-        SimulateTransaction simulateTransaction = new SimulateTransaction(accountNum);
-        simulateTransaction.loadTransaction(accountNum);
+        //if we make the service method static we don't need to instantiate the service class
+        SimulateTransaction.loadTransaction(accountNum);
     }
 
 }
