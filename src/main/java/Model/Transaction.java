@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Transaction {
 
-    public long ID;
+    public String ID;
     public long Account_ID;
     public double amount;
     public String Merchant_Name;

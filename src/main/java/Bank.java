@@ -37,7 +37,7 @@ public class Bank {
         Statement stmt = null;
         //Connor's String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         //Frank's String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
-        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
         try{
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(url);
@@ -62,7 +62,7 @@ public class Bank {
 
             //Transaction is a keyword for sql use a diff name
             stmt.executeUpdate("create table if not exists TransactionTable" +"(" +
-                    "                    transactionId long,\n" +
+                    "                    transactionId String,\n" +
                     "                    Account_ID long,\n" +
                     "                    amount double,\n" +
                     //"                    transactionDate TIMESTAMP,\n" +

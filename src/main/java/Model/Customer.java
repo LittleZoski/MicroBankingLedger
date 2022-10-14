@@ -1,11 +1,13 @@
 package Model;
 
 
+import java.sql.Date;
+
 //@JsonIgnoreProperties(value = {"Name","DOB","PhoneNumber","StreetAddress", "City","State","ZipCode","CreateDate"})
 public class Customer {
     private String id;
     private String Name;
-    private int DOB;
+    private Date DOB;
     private int PhoneNumber;
     private String StreetAddress;
     private String City;
@@ -29,11 +31,11 @@ public class Customer {
         Name = name;
     }
 
-    public int getDOB() {
+    public Date getDOB() {
         return DOB;
     }
 
-    public void setDOB(int DOB) {
+    public void setDOB(Date DOB) {
         this.DOB = DOB;
     }
 

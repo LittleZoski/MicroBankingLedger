@@ -14,7 +14,7 @@ public class CustomerCreation {
         System.out.print("Please Enter Customer Name: ");
         customer.setName(customerCreation.nextLine());
         System.out.print("Please Enter Customer DOB: ");
-        customer.setDOB(Integer.parseInt(customerCreation.nextLine()));
+        customer.setDOB(Date.valueOf(customerCreation.nextLine()));
         System.out.print("Please Enter Customer Phone Number: ");
         customer.setPhoneNumber(Integer.parseInt(customerCreation.nextLine()));
         System.out.print("Please Enter Customer Address: ");
