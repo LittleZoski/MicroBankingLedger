@@ -1,3 +1,4 @@
+import service.CustomerAccountActivity;
 import service.CustomerAccountService;
 import service.CustomerCreation;
 import service.SimulateTransaction;
@@ -33,6 +34,8 @@ public class Bank {
                 CustomerCreation.customerCreation();
             } else if (selection.equalsIgnoreCase("5")){
                 CustomerAccountService.SelectionPromptCrudAccount();
+            } else if (selection.equalsIgnoreCase("6")){
+                CustomerAccountActivity.SelectionPromptAccountFunds();
             }
         }
 
