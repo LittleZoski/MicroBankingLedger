@@ -1,17 +1,17 @@
 package Model;
 
 public class Account {
-    private long ID;
-    private long Customer_ID;
+    private int ID;
+    private int Customer_ID;
     private double balance;
     private String name;
     private long accountNum;
 
-    public long getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -19,7 +19,7 @@ public class Account {
         return Customer_ID;
     }
 
-    public void setCustomer_ID(long customer_ID) {
+    public void setCustomer_ID(int customer_ID) {
         Customer_ID = customer_ID;
     }
 

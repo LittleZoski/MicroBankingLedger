@@ -1,3 +1,4 @@
+import service.CustomerAccountService;
 import service.CustomerCreation;
 import service.SimulateTransaction;
 import java.sql.Connection;
@@ -30,6 +31,8 @@ public class Bank {
                 handleSimulatedTransaction();
             } else if (selection.equalsIgnoreCase("4")){
                 CustomerCreation.customerCreation();
+            } else if (selection.equalsIgnoreCase("5")){
+                CustomerAccountService.SelectionPromptCrudAccount();
             }
         }
 
@@ -60,24 +63,28 @@ public class Bank {
                     "                    StreetAddress String," +
                     "                    City String," +
                     "                    State String)");
-
+            System.out.println("create table Customer successfully");
 
             stmt.executeUpdate("create table if not exists Account" +"(" +
-                    "                    ID long,\n" +
-                    "                    Customer_ID long,\n" +
-                    "                    balance double,\n" +
-                    "                    name String,\n" +
-                    "                    accountNum long)");
+                    "                    ID integer primary key AUTOINCREMENT," +
+                    "                    Customer_ID int," +
+                    "                    balance double," +
+                    "                    name String," +
+                    "                    accountNum long," +
+                    "                    FOREIGN KEY(Customer_ID) REFERENCES Customer(id)" + ")");
 
+            System.out.println("create table Account successfully");
             //Transaction is a keyword for sql use a diff name
             stmt.executeUpdate("create table if not exists TransactionTable" +"(" +
-                    "                    transactionId String,\n" +
-                    "                    Account_ID long,\n" +
-                    "                    amount double,\n" +
+                    "                    transactionId String," +
+                    "                    Account_ID long," +
+                    "                    amount double," +
                     //"                    transactionDate TIMESTAMP,\n" +
-                    "                    transactionType String,\n" +
-                    "                    merchantName String,\n" +
+                    "                    transactionType String," +
+                    "                    merchantName String," +
                     "                    merchantType String)");
+
+            System.out.println("create table TransactionTable successfully");
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -101,5 +108,6 @@ public class Bank {
         //if we make the service method static we don't need to instantiate the service class
         SimulateTransaction.loadTransaction(accountNum);
     }
+
 
 }

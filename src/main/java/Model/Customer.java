@@ -5,7 +5,7 @@ import java.util.Date;
 
 //@JsonIgnoreProperties(value = {"Name","DOB","PhoneNumber","StreetAddress", "City","State","ZipCode","CreateDate"})
 public class Customer {
-    private String id;
+    private int id;
     private String Name;
     private Date DOB;
     private String PhoneNumber;
@@ -15,11 +15,11 @@ public class Customer {
     private int ZipCode;
     private int CreatedDate;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
