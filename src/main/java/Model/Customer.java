@@ -1,13 +1,13 @@
 package Model;
 
 
-import java.sql.Date;
+import java.util.Date;
 
 //@JsonIgnoreProperties(value = {"Name","DOB","PhoneNumber","StreetAddress", "City","State","ZipCode","CreateDate"})
 public class Customer {
     private String id;
     private String Name;
-    private java.sql.Date DOB;
+    private Date DOB;
     private String PhoneNumber;
     private String StreetAddress;
     private String City;

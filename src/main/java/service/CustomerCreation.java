@@ -1,9 +1,10 @@
 package service;
 import Model.Customer;
-
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
+import java.util.Date;
 
 
 public class CustomerCreation {
@@ -18,13 +19,14 @@ public class CustomerCreation {
         //Connor's String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         //Frank's String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
         String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
-
+        DateFormat df = new SimpleDateFormat("yyyy/MM/DD");
 
         try {
             System.out.print("Please Enter Customer Name: ");
             customer.setName(customerCreation.nextLine());
             System.out.print("Please Enter Customer DOB: ");
-            customer.setDOB(Date.valueOf(customerCreation.nextLine()));
+            //customer.setDOB(Date.valueOf(customerCreation.nextLine()));
+            customer.setDOB(df.parse(customerCreation.nextLine()));
             System.out.print("Please Enter Customer Phone Number: ");
             customer.setPhoneNumber(customerCreation.nextLine());
             System.out.print("Please Enter Customer Address: ");
@@ -42,7 +44,10 @@ public class CustomerCreation {
             pstmt = conn.prepareStatement("Insert into Customer (Name, DOB, PhoneNumber, StreetAddress, City, State)" +
                     "VALUES(?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, customer.getName());
-            pstmt.setDate(2, customer.getDOB());
+
+            pstmt.setString(2, customer.getDOB().toString());
+            //pstmt.setDate(2, customer.getDOB());
+
             pstmt.setString(3, customer.getPhoneNumber());
             pstmt.setString(4, customer.getStreetAddress());
             pstmt.setString(5, customer.getCity());

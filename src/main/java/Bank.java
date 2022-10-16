@@ -55,7 +55,7 @@ public class Bank {
                            // in SQLite AUTOINCREMENT only work with integer type
                     "                    id integer primary key AUTOINCREMENT," +
                     "                    Name String," +
-                    "                    DOB int," +
+                    "                    DOB String," +
                     "                    PhoneNumber int," +
                     "                    StreetAddress String," +
                     "                    City String," +
