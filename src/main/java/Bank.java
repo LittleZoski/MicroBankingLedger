@@ -29,7 +29,7 @@ public class Bank {
             selection = userInput();
 
             if(selection.equals("3")){
-                handleSimulatedTransaction();
+                SimulateTransaction.handleSimulatedTransaction();
             } else if (selection.equalsIgnoreCase("4")){
                 CustomerCreation.customerCreation();
             } else if (selection.equalsIgnoreCase("5")){
@@ -85,7 +85,9 @@ public class Bank {
                     //"                    transactionDate TIMESTAMP,\n" +
                     "                    transactionType String," +
                     "                    merchantName String," +
-                    "                    merchantType String)");
+                    "                    merchantType String," +
+                    "                    transactionDate String," +
+                    "                    FOREIGN KEY(Account_ID) REFERENCES Account(accountNum)" +")");
 
             System.out.println("create table TransactionTable successfully");
         }catch(Exception e){
@@ -102,15 +104,7 @@ public class Bank {
     }
 
 
-    //method for user to input id for simulate transaction
 
-    public static void handleSimulatedTransaction(){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Please enter customer account number:");
-        long accountNum = input.nextLong();
-        //if we make the service method static we don't need to instantiate the service class
-        SimulateTransaction.loadTransaction(accountNum);
-    }
 
 
 }

@@ -1,18 +1,24 @@
 package Model;
 
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Account {
-    private int ID;
+    private int account_ID;
     private int Customer_ID;
     private double balance;
     private String name;
+
+    @JsonProperty("id")
     private long accountNum;
 
-    public int getID() {
-        return ID;
+    public int getAccount_ID() {
+        return account_ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setAccount_ID(int ID) {
+        this.account_ID = ID;
     }
 
     public long getCustomer_ID() {

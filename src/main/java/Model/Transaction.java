@@ -1,8 +1,8 @@
 package Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.sql.Time;
+
+
 import java.util.Date;
 
 public class Transaction {
