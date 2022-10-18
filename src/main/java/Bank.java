@@ -1,7 +1,5 @@
-import service.CustomerAccountActivity;
-import service.CustomerAccountService;
-import service.CustomerCreation;
-import service.SimulateTransaction;
+import service.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -36,6 +34,8 @@ public class Bank {
                 CustomerAccountService.SelectionPromptCrudAccount();
             } else if (selection.equalsIgnoreCase("6")){
                 CustomerAccountActivity.SelectionPromptAccountFunds();
+            } else if (selection.equalsIgnoreCase("1")){
+                GenerateBalanceReport.StatementPromptLoop();
             }
         }
 
