@@ -36,7 +36,7 @@ public class CustomerAccountService {
         System.out.print("Please Enter Account Name:");
         String accountName = input.nextLine();
         Random randomGenerator = new Random();
-        Long accountNum = randomGenerator.nextLong()*10000000000000000L + 10000000000000000L;
+        Long accountNum = Math.abs(randomGenerator.nextLong()*10000000000000000L + 10000000000000000L);
         System.out.println("Account created with account number " + accountNum);
         account.setAccountNum(accountNum);
         account.setName(accountName);

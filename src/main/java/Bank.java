@@ -36,6 +36,7 @@ public class Bank {
                 CustomerAccountActivity.SelectionPromptAccountFunds();
             } else if (selection.equalsIgnoreCase("1")){
                 GenerateBalanceReport.StatementPromptLoop();
+                //C:\Users\31243\OneDrive\Desktop\Code\MCC bootcamp formal\bankingproject\statement.txt
             } else if(selection.equalsIgnoreCase("2")){
                 //GenerateStatementReport;
             }
