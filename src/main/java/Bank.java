@@ -36,6 +36,8 @@ public class Bank {
                 CustomerAccountActivity.SelectionPromptAccountFunds();
             } else if (selection.equalsIgnoreCase("1")){
                 GenerateBalanceReport.StatementPromptLoop();
+            } else if(selection.equalsIgnoreCase("2")){
+                //GenerateStatementReport;
             }
         }
 
