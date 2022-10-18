@@ -82,7 +82,6 @@ public class Bank {
                     "                    transactionId String," +
                     "                    Account_ID long," +
                     "                    amount double," +
-                    //"                    transactionDate TIMESTAMP,\n" +
                     "                    transactionType String," +
                     "                    merchantName String," +
                     "                    merchantType String," +

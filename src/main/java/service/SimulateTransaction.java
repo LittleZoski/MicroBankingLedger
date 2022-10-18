@@ -49,7 +49,7 @@ public class SimulateTransaction {
         //Connor's String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
         //transaction need a date
-        DateFormat df = new SimpleDateFormat("yyyy/MM/DD");
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 
         Label: try {
             //first parse api based on accountNum into transactionResponse object then write the object data to DB transaction table

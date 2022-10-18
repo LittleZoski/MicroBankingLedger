@@ -1,6 +1,9 @@
 package service;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 //credit or debit - lydia
@@ -30,12 +33,18 @@ public class CustomerAccountActivity {
         Statement stmt = null;
         ResultSet rs = null;
         String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+
         label: try(Connection conn  = DriverManager.getConnection(url)) {
 
             pstmt = conn.prepareStatement("select * from Account where accountNum = ?");
             pstmt.setLong(1, accountNum);
             pstmt.execute();
             rs = pstmt.getResultSet();
+            if(!rs.next()){
+                System.out.println("Account ID not found, please re-enter account id");
+                break label;
+            }
             double currentBalance = rs.getDouble(3);
             System.out.println("current balance is:" + currentBalance);
             pstmt.close();
@@ -43,6 +52,18 @@ public class CustomerAccountActivity {
             pstmt.setDouble(1, currentBalance + depositAmount);
             pstmt.setLong(2, accountNum);
             pstmt.executeUpdate();
+
+            pstmt.close();
+            pstmt = conn.prepareStatement("insert into TransactionTable (transactionId, Account_ID, amount, transactionType, merchantName, transactionDate)" +
+                    "values(?,?,?,?,?,?)");
+            pstmt.setString(1, "deposit_into_"+accountNum);
+            pstmt.setLong(2, accountNum);
+            pstmt.setDouble(3, depositAmount);
+            pstmt.setString(4, "CREDIT");
+            pstmt.setString(5, "Deposit");
+            pstmt.setString(6,df.format(new Date()));
+            pstmt.execute();
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -62,12 +83,18 @@ public class CustomerAccountActivity {
         Statement stmt = null;
         ResultSet rs = null;
         String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        DateFormat df = new SimpleDateFormat("yyyy/mm/dd");
+
         label: try(Connection conn  = DriverManager.getConnection(url)) {
 
             pstmt = conn.prepareStatement("select * from Account where accountNum = ?");
             pstmt.setLong(1, accountNum);
             pstmt.execute();
             rs = pstmt.getResultSet();
+            if(!rs.next()){
+                System.out.println("Account ID not found, please re-enter account id");
+                break label;
+            }
             double currentBalance = rs.getDouble(3);
             System.out.println("current balance is:" + currentBalance);
             pstmt.close();
@@ -80,7 +107,16 @@ public class CustomerAccountActivity {
             pstmt.setDouble(1, currentBalance - withdrawAmount);
             pstmt.setLong(2, accountNum);
             pstmt.executeUpdate();
-
+            pstmt.close();
+            pstmt = conn.prepareStatement("insert into TransactionTable (transactionId, Account_ID, amount, transactionType, merchantName, transactionDate)" +
+                    "values(?,?,?,?,?,?)");
+            pstmt.setString(1, "withdrawl_from_"+accountNum);
+            pstmt.setLong(2, accountNum);
+            pstmt.setDouble(3, withdrawAmount);
+            pstmt.setString(4, "Debit");
+            pstmt.setString(5, "Withdrawl");
+            pstmt.setString(6, df.format(new Date()));
+            pstmt.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
