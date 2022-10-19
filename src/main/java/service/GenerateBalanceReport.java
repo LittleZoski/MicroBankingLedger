@@ -40,7 +40,7 @@ public class GenerateBalanceReport {
         //Connor's String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         //Frank's String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
         //Darla's String url = "jdbc:sqlite:C:\Users\l\Documents\MCC Code\BankingProject\Bank.db";
-        String url = "jdbc:sqlite:C:\\Users\\l\\Documents\\MCC Code\\BankingProject\\Bank.db";
+        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

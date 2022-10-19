@@ -1,14 +1,15 @@
 package service;
 
 import Model.TransactionResponse;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
-import javax.swing.*;
-import java.awt.*;
+
+//import org.apache.http.client.methods.HttpGet;
+//import org.apache.http.impl.client.CloseableHttpClient;
+//import org.apache.http.impl.client.HttpClients;
 import java.io.IOException;
 import java.sql.*;
 import java.text.DateFormat;
@@ -38,10 +39,10 @@ public class SimulateTransaction {
     public static void loadTransaction(long id){
         ObjectMapper mapper = new ObjectMapper();
         //mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
         CloseableHttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("https://mcc-java-transaction-api.herokuapp.com/transaction/"+id);
 
+        //HttpGet request = new HttpGet("https://mcc-java-transaction-api.herokuapp.com/transaction/"+id);
+        HttpGet request = new HttpGet("https://mcc-java-transaction-api.herokuapp.com/transaction/"+id);
         Connection conn = null;
         ResultSet rs;
         PreparedStatement stmt = null;
@@ -49,7 +50,7 @@ public class SimulateTransaction {
         //Connor's String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         //Frank's String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
         //Darla's String url = "jdbc:sqlite:C:\\Users\\l\\Documents\\MCC Code\\BankingProject\\Bank.db";
-        String url = "jdbc:sqlite:C:\\Users\\l\\Documents\\MCC Code\\BankingProject\\Bank.db";
+        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
         //transaction need a date
         DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 
