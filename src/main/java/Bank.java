@@ -38,7 +38,7 @@ public class Bank {
                 GenerateBalanceReport.StatementPromptLoop();
                 //C:\Users\31243\OneDrive\Desktop\Code\MCC bootcamp formal\bankingproject\statement.txt
             } else if(selection.equalsIgnoreCase("2")){
-                //GenerateStatementReport;
+                GenerateAccountReport.AccountPromptLoop();
             }
         }
 
@@ -54,7 +54,8 @@ public class Bank {
         Statement stmt = null;
         //Connor's String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         //Frank's String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
-        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        //Darla's String url = "jdbc:sqlite:C:\Users\l\Documents\MCC Code\BankingProject\Bank.db";
+        String url = "jdbc:sqlite:C:\\Users\\l\\Documents\\MCC Code\\BankingProject\\Bank.db";
         try{
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(url);

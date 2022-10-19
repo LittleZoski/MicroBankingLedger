@@ -34,7 +34,8 @@ public class CustomerAccountActivity {
         ResultSet rs = null;
         //Connor's String URL = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         //Frank's String URL = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
-        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        //Darla's String url = "jdbc:sqlite:C:\Users\l\Documents\MCC Code\BankingProject\Bank.db";
+        String url = "jdbc:sqlite:C:\\Users\\l\\Documents\\MCC Code\\BankingProject\\Bank.db";
         DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 
         label: try(Connection conn  = DriverManager.getConnection(url)) {

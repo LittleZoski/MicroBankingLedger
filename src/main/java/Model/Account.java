@@ -53,4 +53,3 @@ public class Account {
         this.accountNum = accountNum;
     }
 }
-
