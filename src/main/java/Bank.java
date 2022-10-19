@@ -54,7 +54,7 @@ public class Bank {
         Statement stmt = null;
         //Connor's String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         //Frank's String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
-        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         try{
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(url);
@@ -68,7 +68,8 @@ public class Bank {
                     "                    PhoneNumber int," +
                     "                    StreetAddress String," +
                     "                    City String," +
-                    "                    State String)");
+                    "                    State String," +
+                    "                    ZipCode int)");
             System.out.println("create table Customer successfully");
 
             stmt.executeUpdate("create table if not exists Account" +"(" +
@@ -91,7 +92,7 @@ public class Bank {
                     "                    transactionDate String," +
                     "                    FOREIGN KEY(Account_ID) REFERENCES Account(accountNum)" +")");
 
-            System.out.println("create table TransactionTable successfully");
+            System.out.println("Created table TransactionTable successfully");
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -6,12 +6,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-//credit or debit - lydia
+
 public class CustomerAccountActivity {
 
     public static void SelectionPromptAccountFunds(){
         System.out.println("D - Deposit Funds\n" +
-                "W - Withdrawl Funds\n");
+                "W - Withdrawal Funds\n");
 
         Scanner input =  new Scanner(System.in);
         String userInput = input.nextLine();
@@ -32,7 +32,9 @@ public class CustomerAccountActivity {
         PreparedStatement pstmt = null;
         Statement stmt = null;
         ResultSet rs = null;
-        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        //Connor's String URL = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        //Frank's String URL = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 
         label: try(Connection conn  = DriverManager.getConnection(url)) {
@@ -82,7 +84,9 @@ public class CustomerAccountActivity {
         PreparedStatement pstmt = null;
         Statement stmt = null;
         ResultSet rs = null;
-        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        //Connor's String URL = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        //Frank's String URL = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         DateFormat df = new SimpleDateFormat("yyyy/mm/dd");
 
         label: try(Connection conn  = DriverManager.getConnection(url)) {
@@ -100,7 +104,7 @@ public class CustomerAccountActivity {
             pstmt.close();
             //account cant be over drafted
             if(currentBalance - withdrawAmount <=0 ){
-                System.out.println("Account does not have enough fund to withdral the requested amount, please try again");
+                System.out.println("Account does not have enough fund to withdrawal the requested amount, please try again");
                 break label;
             }
             pstmt = conn.prepareStatement("update Account set balance = ? where accountNum = ?");
@@ -110,11 +114,11 @@ public class CustomerAccountActivity {
             pstmt.close();
             pstmt = conn.prepareStatement("insert into TransactionTable (transactionId, Account_ID, amount, transactionType, merchantName, transactionDate)" +
                     "values(?,?,?,?,?,?)");
-            pstmt.setString(1, "withdrawl_from_"+accountNum);
+            pstmt.setString(1, "withdrawal_from_"+accountNum);
             pstmt.setLong(2, accountNum);
             pstmt.setDouble(3, withdrawAmount);
             pstmt.setString(4, "Debit");
-            pstmt.setString(5, "Withdrawl");
+            pstmt.setString(5, "Withdrawal");
             pstmt.setString(6, df.format(new Date()));
             pstmt.execute();
         } catch (SQLException e) {

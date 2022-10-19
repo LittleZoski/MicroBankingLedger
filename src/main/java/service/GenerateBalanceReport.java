@@ -37,7 +37,9 @@ public class GenerateBalanceReport {
 
     public static void outputStatement(BufferedWriter bw, String customerName){
         DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
-        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        //Connor's String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        //Frank's String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

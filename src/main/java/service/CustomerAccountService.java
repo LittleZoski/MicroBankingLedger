@@ -47,7 +47,9 @@ public class CustomerAccountService {
         PreparedStatement pstmt = null;
         Statement stmt = null;
         ResultSet rs = null;
-        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        //Connor's String URL = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        //Frank's String URL = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         label: try(Connection conn  = DriverManager.getConnection(url)) {
             stmt = conn.createStatement();
             //get the customer from DB with name = cutomerName and return the customer ID
@@ -82,7 +84,9 @@ public class CustomerAccountService {
         String accountName = input.nextLine();
 
         PreparedStatement pstmt = null;
-        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        //Connor's String URL = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        //Frank's String URL = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         label: try(Connection conn  = DriverManager.getConnection(url)) {
             pstmt = conn.prepareStatement("update Account set name = ? where accountNum =? ");
             pstmt.setString(1,accountName);
@@ -99,7 +103,9 @@ public class CustomerAccountService {
         System.out.print("Please Enter Account Number: ");
         long accountNum = input.nextLong();
         PreparedStatement pstmt = null;
-        String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        //Connor's String URL = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
+        //Frank's String URL = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
+        String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
         label: try(Connection conn  = DriverManager.getConnection(url)) {
             pstmt = conn.prepareStatement("delete from Account where accountNum = ? ");
             pstmt.setLong(1, accountNum);
