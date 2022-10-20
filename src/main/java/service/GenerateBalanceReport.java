@@ -22,15 +22,15 @@ public class GenerateBalanceReport {
             try {
                 System.out.println("Please enter a valid file path for me to create the file:");
                 String filePath = input.nextLine();
-                bw = new BufferedWriter(new FileWriter(filePath));
+                //bw = new BufferedWriter(new FileWriter(filePath));
                 System.out.println("Please Enter Customer Name:");
                 String customerName = input.nextLine();
+                bw = new BufferedWriter(new FileWriter(filePath + "\\" + customerName + ".txt"));
                 outputStatement(bw, customerName);
                 bw.close();
                 break;
             } catch (IOException e) {
                 System.out.println("Invalid Directory, Please Try again:");
-                throw new RuntimeException(e);
             }
         }
     }
