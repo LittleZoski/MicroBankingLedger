@@ -19,13 +19,13 @@ public class GenerateAccountReport {
                 try {
                     System.out.println("Please enter a valid file path for me to create the file:");
                     String filePath = input.nextLine();
-                    bw = new BufferedWriter(new FileWriter(filePath));
+                    bw = new BufferedWriter(new FileWriter(filePath+ "\\AccountReport.txt"));
                     outputAccount(bw);
                     bw.close();
                     break;
                 } catch (IOException e) {
                     System.out.println("Invalid Directory, Please Try again:");
-                    throw new RuntimeException(e);
+
                 }
             }
         }
