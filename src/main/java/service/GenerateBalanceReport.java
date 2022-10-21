@@ -61,7 +61,7 @@ public class GenerateBalanceReport {
             pstmt = conn.prepareStatement("select * from TransactionTable " +
                     "where Account_ID in(select accountNum from Account " +
                     "where Customer_ID in(select id from Customer " +
-                    "where LOWER(Customer.Name) = LOWER(?)));");
+                    "where LOWER(Customer.Name) = LOWER(?)))order by Account_ID;");
 
             pstmt.setString(1, customerName);
             pstmt.execute();

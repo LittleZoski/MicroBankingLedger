@@ -31,7 +31,7 @@ public class GenerateAccountReport {
         }
 
         public static void outputAccount(BufferedWriter bw){
-            DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
+            //DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
             //Connor's String url = "jdbc:sqlite:C:\\Users\\bta91388\\IdeaProjects\\bankingproject\\MicroBankLedger.db";
             //Frank's String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
             //Darla's String url = "jdbc:sqlite:C:\Users\l\Documents\MCC Code\BankingProject\Bank.db";
@@ -67,7 +67,7 @@ public class GenerateAccountReport {
                 pstmt.close();
 
 
-                //sql query transaction where accountID matches accountNum in Account and customer_ID matches ID from Customer
+
                 pstmt = conn.prepareStatement("select * from Customer c inner join Account a where c.id = a.Customer_ID");
                 pstmt.execute();
                 rs = pstmt.getResultSet();
@@ -77,6 +77,25 @@ public class GenerateAccountReport {
                     bw.write(rs.getString(2)+ "\n" +
                             rs2.getString(12) + "-" + "$" + rs2.getDouble(11) + "\n");
                 }
+
+
+                //the previous method
+                //sql query transaction where accountID matches accountNum in Account and customer_ID matches ID from Customer
+//                pstmt = conn.prepareStatement("select * from Customer");
+//                pstmt.execute();
+//                rs = pstmt.getResultSet();
+//                while(rs.next()){
+//                    System.out.println(rs.getString(2)+ "\n");
+//                    bw.write(rs.getString(2) + "\n");
+//                    pstmt = conn.prepareStatement("select * from Account where Customer_ID = ?");
+//                    pstmt.setInt(1, rs.getInt(1));
+//                    pstmt.execute();
+//                    rs2 = pstmt.getResultSet();
+//                    while(rs2.next()) {
+//                        System.out.println(rs2.getString(4) + "-" + "$" + rs2.getDouble(3) + "\n");
+//                        bw.write(rs2.getString(4) + "-" + "$" + rs2.getDouble(3) + "\n");
+//                    }
+//                }
             } catch (IOException | SQLException e) {
                 throw new RuntimeException(e);
             } finally {

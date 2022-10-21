@@ -20,7 +20,7 @@ public class CustomerCreation {
         //Frank's String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
         //Darla's String url = "jdbc:sqlite:C:\Users\l\Documents\MCC Code\BankingProject\Bank.db";
         String url = "jdbc:sqlite:C:\\Users\\31243\\OneDrive\\Desktop\\Code\\MCC bootcamp formal\\bankingproject\\MicroBankLedger.db";
-        DateFormat df = new SimpleDateFormat("yyyy/MM/DD");
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 
         try {
             System.out.print("Please Enter Customer Name: ");
@@ -44,6 +44,7 @@ public class CustomerCreation {
             pstmt = conn.prepareStatement("Insert into Customer (Name, DOB, PhoneNumber, StreetAddress, City, State, ZipCode)" +
                     "VALUES(?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, customer.getName());
+            System.out.println(customer.getDOB().toString());
             pstmt.setString(2, customer.getDOB().toString());
             pstmt.setString(3, customer.getPhoneNumber());
             pstmt.setString(4, customer.getStreetAddress());

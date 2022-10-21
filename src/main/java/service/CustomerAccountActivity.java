@@ -4,6 +4,7 @@ import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -23,11 +24,22 @@ public class CustomerAccountActivity {
     }
 
     public static void depositFund(){
-        Scanner input = new Scanner(System.in);
-        System.out.print("Please Enter Account Number:");
-        long accountNum = input.nextLong();
-        System.out.print("Please Enter the Amount to Deposit:");
-        Double depositAmount = input.nextDouble();
+        long accountNum = 0;
+        Double depositAmount = null;
+
+        while(true){
+            Scanner input = new Scanner(System.in);
+            try{
+                System.out.print("Please Enter Account Number:");
+                accountNum = input.nextLong();
+                System.out.print("Please Enter the Amount to Deposit:");
+                depositAmount = input.nextDouble();
+                break;
+            } catch(InputMismatchException e){
+                System.out.println("input is not of the correct type expected, re-enter input");
+            }
+        }
+
 
         PreparedStatement pstmt = null;
         Statement stmt = null;
@@ -49,10 +61,11 @@ public class CustomerAccountActivity {
                 break label;
             }
             double currentBalance = rs.getDouble(3);
-            System.out.println("current balance is:" + currentBalance);
+            System.out.println("previous balance is:" + currentBalance);
             pstmt.close();
             pstmt = conn.prepareStatement("update Account set balance = ? where accountNum = ?");
             pstmt.setDouble(1, currentBalance + depositAmount);
+            System.out.println("Current balance is:" + (currentBalance - depositAmount));
             pstmt.setLong(2, accountNum);
             pstmt.executeUpdate();
 
@@ -75,11 +88,22 @@ public class CustomerAccountActivity {
     }
 
     public static void drawlFund(){
-        Scanner input = new Scanner(System.in);
-        System.out.print("Please Enter Account Number:");
-        long accountNum = input.nextLong();
-        System.out.print("Please Enter the Amount to Deposit:");
-        Double withdrawAmount = input.nextDouble();
+
+        long accountNum = 0;
+        Double withdrawAmount = null;
+
+        while(true){
+            Scanner input = new Scanner(System.in);
+            try{
+                System.out.print("Please Enter Account Number:");
+                accountNum = input.nextLong();
+                System.out.print("Please Enter the Amount to Withdraw:");
+                withdrawAmount = input.nextDouble();
+                break;
+            } catch(InputMismatchException e){
+                System.out.println("input is not of the correct type expected, re-enter input");
+            }
+        }
 
 
         PreparedStatement pstmt = null;
@@ -101,7 +125,7 @@ public class CustomerAccountActivity {
                 break label;
             }
             double currentBalance = rs.getDouble(3);
-            System.out.println("current balance is:" + currentBalance);
+            System.out.println("Previous balance is:" + currentBalance);
             pstmt.close();
             //account cant be over drafted
             if(currentBalance - withdrawAmount <=0 ){
@@ -110,6 +134,7 @@ public class CustomerAccountActivity {
             }
             pstmt = conn.prepareStatement("update Account set balance = ? where accountNum = ?");
             pstmt.setDouble(1, currentBalance - withdrawAmount);
+            System.out.println("Current balance is:" + (currentBalance - withdrawAmount));
             pstmt.setLong(2, accountNum);
             pstmt.executeUpdate();
             pstmt.close();
