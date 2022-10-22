@@ -62,6 +62,11 @@ public class GenerateBalanceReport {
                     "where Account_ID in(select accountNum from Account " +
                     "where Customer_ID in(select id from Customer " +
                     "where LOWER(Customer.Name) = LOWER(?)))order by Account_ID;");
+            //the sql here can be replaced with triple inner join as well if we do this below sql, it will organize the
+            //all the transaction and order by customer name. swapping to this will save the code logic below to filter the data.
+            //select * from TransactionTable T inner join Account A on T.Account_ID = A.accountNum inner join Customer C on A.Customer_ID = C.id
+
+
 
             pstmt.setString(1, customerName);
             pstmt.execute();

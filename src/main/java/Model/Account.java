@@ -8,6 +8,7 @@ public class Account {
     private int account_ID;
     private int Customer_ID;
     private double balance;
+    //in industry for money data type, BigDecimal are being used
     private String name;
 
     @JsonProperty("id")
