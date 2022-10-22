@@ -20,11 +20,11 @@ import java.util.Scanner;
 
 public class SimulateTransaction {
 
-    private long id;
-
-    public SimulateTransaction(long id){
-        this.id = id;
-    }
+//    private long id;
+//
+//    public SimulateTransaction(long id){
+//        this.id = id;
+//    }
 
 
     //method for user to input id for simulate transaction
@@ -38,10 +38,7 @@ public class SimulateTransaction {
 
     public static void loadTransaction(long id){
         ObjectMapper mapper = new ObjectMapper();
-        //mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         CloseableHttpClient client = HttpClients.createDefault();
-
-        //HttpGet request = new HttpGet("https://mcc-java-transaction-api.herokuapp.com/transaction/"+id);
         HttpGet request = new HttpGet("https://mcc-java-transaction-api.herokuapp.com/transaction/"+id);
         Connection conn = null;
         ResultSet rs;

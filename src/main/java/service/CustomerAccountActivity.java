@@ -65,7 +65,7 @@ public class CustomerAccountActivity {
             pstmt.close();
             pstmt = conn.prepareStatement("update Account set balance = ? where accountNum = ?");
             pstmt.setDouble(1, currentBalance + depositAmount);
-            System.out.println("Current balance is:" + (currentBalance - depositAmount));
+            System.out.println("Current balance is:" + (currentBalance + depositAmount));
             pstmt.setLong(2, accountNum);
             pstmt.executeUpdate();
 

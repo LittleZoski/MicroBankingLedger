@@ -1,5 +1,7 @@
 package service;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -70,12 +72,19 @@ public class GenerateAccountReport {
 
                 pstmt = conn.prepareStatement("select * from Customer c inner join Account a where c.id = a.Customer_ID");
                 pstmt.execute();
-                rs = pstmt.getResultSet();
-                while(rs.next()){
-                    System.out.println(rs.getString(2)+ "\n" +
+                rs2 = pstmt.getResultSet();
+                String currentName = null;
+                while(rs2.next()){
+                    if(rs2.getRow() == 1 || !rs2.getString(2).equalsIgnoreCase(currentName)){
+                        System.out.println(rs2.getString(2)+ "\n");
+                        bw.write(rs2.getString(2)+ "\n");
+                    }
+                    System.out.println(
                             rs2.getString(12) + "-" + "$" + rs2.getDouble(11) + "\n");
-                    bw.write(rs.getString(2)+ "\n" +
+                    bw.write(
                             rs2.getString(12) + "-" + "$" + rs2.getDouble(11) + "\n");
+
+                    currentName = rs2.getString(2);
                 }
 
 
