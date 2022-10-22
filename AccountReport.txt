@@ -1,0 +1,16 @@
+Total Customers 5
+Total Accounts 8
+Total Balance 1.001111984866E10
+Frank Zhou
+saving1-$449769.0
+checking-$39481.82
+tuition-$2600.0
+Anni zou
+Travel account-$3545.0
+grocery-$23423.0
+li li
+saving-$1.0E10
+Michael zach
+beer money #2-$1.000797318E7
+Frank kyle 
+milk-$593056.66
